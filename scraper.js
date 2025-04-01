@@ -10,7 +10,7 @@ const scrapeRustMarket = async () => {
   let pageNumber = 1;
 
   // Launch Puppeteer
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
 
   while (pageNumber <= maxPages) {
