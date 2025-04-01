@@ -10,7 +10,13 @@ const scrapeRustMarket = async () => {
   let pageNumber = 1;
 
   // Launch Puppeteer
-  const browser = await puppeteer.launch({ headless: "new" });
+  // const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    executablePath: '/usr/bin/chromium-browser', // <- system path
+    args: ['--no-sandbox', '--disable-setuid-sandbox'] // <- required on Clever Cloud
+  });
+  
   const page = await browser.newPage();
 
   while (pageNumber <= maxPages) {
